@@ -19,15 +19,18 @@ const UserProfiles = () => {
     fetchUserProfiles();
   },[]);
 
-  return userProfiles.map((userProfile , index) => {
+  return userProfiles.map((userProfile, index) => {
     return (
       <div key={index}>
-        <br/>
-        <br/>
+        {userProfile.userProfileId ? 
+        (<img src={`http://localhost:8080/api/v1/user-profile/${userProfile.userProfileId}/image/download`} />
+        ) : null }
+        <br />
+        <br />
         <h1>{userProfile.username}</h1>
         <p>{userProfile.userProfileId}</p>
         <Dropzone {...userProfile} />
-        <br/>
+        <br />
       </div>
     )
   });
